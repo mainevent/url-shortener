@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+.ng-invalid.ng-touched {
+  border-color: #ff3b31;
+}
+
+.ng-valid.ng-touched {
+  border-color: #4ac600;
+}

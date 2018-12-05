@@ -1,0 +1,42 @@
+
+<div class="container">
+  <h4>Url shortener app</h4>
+
+<form [formGroup]="form" class="mb-5">
+  <div class="row">
+    <div class="col">
+      <input formControlName="name" placeholder="Name" class="form-control">
+    </div>
+    <div class="col">
+      <input formControlName="link" placeholder="Link" class="form-control">
+    </div>
+    <div class="col">
+      <input formControlName="shortLink" placeholder="Short Link" class="form-control">
+    </div>
+    <div class="col"><button (click)="addUrl(form.value)" type="button" class="btn btn-primary" [disabled]="form.invalid || form.pristine">Add link</button></div>
+  </div>
+</form>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Original link</th>
+      <th scope="col">Short link</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let url of urls; let i = index;">
+      <th scope="row">{{i}}</th>
+      <td class="w-25"><app-edit-cell [value]="url.name" (valueChanged)="url.name = $event; saveChanges()"></app-edit-cell></td>
+      <td class="w-25"><app-edit-cell [value]="url.link" (valueChanged)="url.link = $event; saveChanges()"></app-edit-cell></td>
+      <td class="w-25"><app-edit-cell [value]="url.shortLink" (valueChanged)="url.shortLink = $event; saveChanges()"></app-edit-cell></td>
+      <td class="w-auto" (click)="deleteUrl(i)"><i class="fa fa-trash"></i></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</div>
