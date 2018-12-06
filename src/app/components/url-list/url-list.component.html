@@ -1,0 +1,30 @@
+<app-add-url-form [form]="form" (formSubmit)="addUrl($event)"></app-add-url-form>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Original link</th>
+      <th scope="col">Short link</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let url of urls; let i = index;">
+      <th scope="row">{{i}}</th>
+      <td class="w-25">
+        <app-edit-cell [value]="url.name" (valueChanged)="url.name = $event; saveChanges()"></app-edit-cell>
+      </td>
+      <td class="w-25">
+        <app-edit-cell [value]="url.link" (valueChanged)="url.link = $event; saveChanges()"></app-edit-cell>
+      </td>
+      <td class="w-25">
+        <app-edit-cell [value]="url.shortLink" (valueChanged)="url.shortLink = $event; saveChanges()"></app-edit-cell>
+      </td>
+      <td class="w-auto text-right" (click)="deleteUrl(i)"><i class="fa fa-trash delete-icon"></i></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

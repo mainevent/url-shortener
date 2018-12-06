@@ -1,11 +1,12 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-edit-cell',
-  template: `<span *ngIf="!edit">{{value}}</span>
-  <input class="form-control"
-    [(ngModel)]="value" *ngIf="edit" (blur)="edit = false" (change)="onValueChanged(value)">`,
-  styles: [':host {cursor: pointer}'],
+  template: `
+    <span *ngIf="!edit">{{value}}</span>
+    <input class="form-control"
+      [(ngModel)]="value" *ngIf="edit" (blur)="edit = false" (change)="onValueChanged(value)">`,
+  styles: [':host {display: block} :host:hover {cursor: pointer}'],
 })
 export class AppEditCellComponent {
   @Input() value: string;

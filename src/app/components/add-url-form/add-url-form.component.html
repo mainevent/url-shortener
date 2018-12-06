@@ -1,0 +1,19 @@
+<form [formGroup]="form" class="mb-3" (submit)="addUrl(form.value)">
+  <div class="row">
+    <div class="col">
+      <input formControlName="name" placeholder="Name" class="form-control">
+    </div>
+    <div class="col">
+      <input formControlName="link" placeholder="Original Link" class="form-control">
+    </div>
+    <div class="col">
+      <input formControlName="shortLink" placeholder="Short Link" class="form-control">
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-primary float-right"
+                             [disabled]="form.invalid || form.pristine">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,13 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import { UrlListService } from '../services/url-list.service';
-import {FormControl, FormGroup, Validator, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { UrlListService } from '../../services/url-list.service';
 
 @Component({
   selector: 'app-url-list',
   templateUrl: './url-list.component.html',
   styleUrls: ['./url-list.component.css'],
 })
-export class UrlListComponent implements OnInit {
+
+export class UrlListComponent {
   urls = this.urlService.storedUrls;
   form = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -15,10 +17,7 @@ export class UrlListComponent implements OnInit {
     shortLink: new FormControl('', Validators.required),
   });
 
-  constructor(public urlService: UrlListService) { }
-
-  ngOnInit() {
-  }
+  constructor(public urlService: UrlListService) {}
 
   addUrl(values) {
     this.urls.push(values);
@@ -32,7 +31,6 @@ export class UrlListComponent implements OnInit {
 
   deleteUrl(index) {
     this.urls.splice(index, 1);
-
     this.urlService.storedUrls = this.urls;
   }
 }
